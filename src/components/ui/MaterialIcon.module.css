@@ -1,0 +1,16 @@
+/* Fixed box so nothing jumps while the icon font loads */
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  flex-shrink: 0;
+  user-select: none;
+  transition: font-variation-settings .3s ease;
+}
+
+.icon.fill { font-variation-settings: 'FILL' 1; }
+
+/* Hidden until useIconsReady() adds .icons-ready to <html> */
+:global(html.js:not(.icons-ready)) .icon { opacity: 0; }

@@ -1,0 +1,52 @@
+/* Overlays (specs modal, toast, search) */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  justify-content: center;
+  background: rgba(12, 14, 15, .9);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s ease, visibility 0s linear .4s;
+}
+
+.overlay.isOpen {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transition-delay: 0s;
+}
+
+.sheet {
+  opacity: 0;
+  translate: 0 40px;
+  scale: .96;
+  transition:
+    opacity .45s ease,
+    translate .6s cubic-bezier(.22, 1, .36, 1),
+    scale .6s cubic-bezier(.22, 1, .36, 1);
+}
+
+.overlay.isOpen .sheet { opacity: 1; translate: 0 0; scale: 1; }
+
+@media (max-width: 767px) {
+  .sheetBottom { translate: 0 100%; scale: 1; opacity: 1; }
+}
+
+.overlay .in {
+  opacity: 0;
+  translate: 0 14px;
+  transition: opacity .35s ease, translate .35s ease;
+}
+
+.overlay.isOpen .in {
+  opacity: 1;
+  translate: 0 0;
+  transition:
+    opacity .6s ease calc(var(--i, 0) * 70ms + .18s),
+    translate .7s cubic-bezier(.22, 1, .36, 1) calc(var(--i, 0) * 70ms + .18s);
+}

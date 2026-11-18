@@ -1,0 +1,2 @@
+.imgFade { transition: opacity .5s ease, scale .7s cubic-bezier(.22, 1, .36, 1); }
+.imgFade.isSwapping { opacity: 0; scale: .95; }

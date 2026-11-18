@@ -1,0 +1,66 @@
+/* Respect the iPhone home-indicator area */
+.safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+
+/* Active tab */
+.tabLink.isActive { color: #e9c176; }
+.tabLink.isActive :global(.material-symbols-outlined) { font-variation-settings: 'FILL' 1; }
+
+/* bottomNav */
+.bottomNav {
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 50;
+  background-color: rgb(var(--color-surface-container-lowest-rgb) / 0.9);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  box-shadow: 0 -1px 12px rgba(0,0,0,0.5);
+}
+
+@media (min-width: 768px) {
+  .bottomNav {
+    display: none;
+  }
+}
+
+/* box */
+.box {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  border-top-width: 1px;
+  border-color: rgb(var(--color-secondary-rgb) / 0.2);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 4rem;
+  background-color: rgb(var(--color-surface-container-lowest-rgb) / 0.95);
+}
+
+/* link */
+.link {
+  gap: 0.125rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3rem;
+  color: var(--color-on-surface-variant);
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* icon */
+.icon {
+  font-size: 20px;
+}
+
+/* span */
+.span {
+  text-transform: uppercase;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  letter-spacing: 0.05em;
+}

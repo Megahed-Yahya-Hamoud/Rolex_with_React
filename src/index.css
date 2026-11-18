@@ -1,0 +1,199 @@
+/* =========================================================================
+   Global styles — plain CSS (no Tailwind)
+   Component styles live in each component's *.module.css file.
+   IMPORTANT: this file must be imported first (see src/main.jsx) so the
+   component CSS Modules can override the reset below.
+   ========================================================================= */
+
+/* ---------- Design tokens ---------- */
+:root {
+  /* colors (+ "-rgb" channels, used for translucent colors: rgb(var(--color-x-rgb) / .5)) */
+  --color-background: #121415;
+  --color-background-rgb: 18 20 21;
+  --color-on-primary-container: #88d8a7;
+  --color-on-primary-container-rgb: 136 216 167;
+  --color-on-secondary: #412d00;
+  --color-on-secondary-rgb: 65 45 0;
+  --color-on-surface: #e2e2e3;
+  --color-on-surface-rgb: 226 226 227;
+  --color-on-surface-variant: #bfc9bf;
+  --color-on-surface-variant-rgb: 191 201 191;
+  --color-outline: #89938a;
+  --color-outline-rgb: 137 147 138;
+  --color-outline-variant: #3f4942;
+  --color-outline-variant-rgb: 63 73 66;
+  --color-primary: #88d7a6;
+  --color-primary-rgb: 136 215 166;
+  --color-primary-container: #006039;
+  --color-primary-container-rgb: 0 96 57;
+  --color-secondary: #e9c176;
+  --color-secondary-rgb: 233 193 118;
+  --color-secondary-container: #604403;
+  --color-secondary-container-rgb: 96 68 3;
+  --color-secondary-fixed: #ffdea5;
+  --color-secondary-fixed-rgb: 255 222 165;
+  --color-surface: #121415;
+  --color-surface-rgb: 18 20 21;
+  --color-surface-container: #1e2021;
+  --color-surface-container-rgb: 30 32 33;
+  --color-surface-container-high: #282a2b;
+  --color-surface-container-high-rgb: 40 42 43;
+  --color-surface-container-highest: #333536;
+  --color-surface-container-highest-rgb: 51 53 54;
+  --color-surface-container-low: #1a1c1d;
+  --color-surface-container-low-rgb: 26 28 29;
+  --color-surface-container-lowest: #0c0e0f;
+  --color-surface-container-lowest-rgb: 12 14 15;
+  --color-tertiary-container: #2d5c40;
+  --color-tertiary-container-rgb: 45 92 64;
+
+  /* spacing */
+  --gutter: clamp(1rem, 3vw, 2rem);
+  --margin: 4rem;
+  --margin-mobile: clamp(1rem, 4.5vw, 1.5rem);
+  --space-lg: clamp(1.75rem, 5vw, 3rem);
+  --space-md: clamp(1rem, 3vw, 1.5rem);
+  --space-sm: 0.75rem;
+  --space-xl: clamp(2.5rem, 8vw, 6rem);
+  --space-xs: 0.25rem;
+
+  /* fonts */
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-serif: "Noto Serif", Georgia, serif;
+}
+
+/* ---------- Reset ---------- */
+*, ::before, ::after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: #e5e7eb;
+}
+
+html {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
+  scroll-padding-top: 4.75rem;
+}
+
+html:not(.js) { scroll-behavior: smooth; }
+@media (min-width: 768px) { html { scroll-padding-top: 5.5rem; } }
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: clip;
+  overflow-wrap: break-word;
+  overscroll-behavior: none;
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  font-family: var(--font-sans);
+  font-size: clamp(13px, 12px + 0.4vw, 15px);
+  font-weight: 300;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-secondary);
+  color: var(--color-on-secondary);
+}
+
+main > :first-child { margin-top: 0 !important; }
+main > :last-child { margin-bottom: 0 !important; }
+
+h1, h2, h3, h4, h5, h6 { font-size: inherit; font-weight: inherit; }
+a { color: inherit; text-decoration: inherit; }
+b, strong { font-weight: bolder; }
+
+blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre { margin: 0; }
+fieldset { margin: 0; padding: 0; }
+legend { padding: 0; }
+ol, ul, menu { list-style: none; margin: 0; padding: 0; }
+
+img, svg, video, canvas, audio, iframe, embed, object { display: block; vertical-align: middle; }
+img, video { max-width: 100%; height: auto; }
+[hidden] { display: none; }
+
+button, input, optgroup, select, textarea {
+  font-family: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+button, select { text-transform: none; }
+
+button, [type='button'], [type='reset'], [type='submit'] {
+  -webkit-appearance: button;
+  appearance: button;
+  background-color: transparent;
+  background-image: none;
+}
+
+button, [role='button'] { cursor: pointer; }
+:disabled { cursor: default; }
+textarea { resize: vertical; }
+input::placeholder, textarea::placeholder { opacity: 1; color: #9ca3af; }
+
+[type='search'] { -webkit-appearance: textfield; appearance: textfield; outline-offset: -2px; }
+::-webkit-search-decoration { -webkit-appearance: none; }
+
+/* ---------- Form controls (base look, overridden by the component CSS) ---------- */
+[type='text'], [type='email'], [type='search'], [type='date'], select {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  border-color: #6b7280;
+  border-width: 1px;
+  border-radius: 0;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+  print-color-adjust: exact;
+}
+
+::-webkit-datetime-edit-fields-wrapper { padding: 0; }
+::-webkit-date-and-time-value { min-height: 1.5em; text-align: inherit; }
+::-webkit-datetime-edit { display: inline-flex; }
+::-webkit-datetime-edit, ::-webkit-datetime-edit-year-field, ::-webkit-datetime-edit-month-field,
+::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-minute-field,
+::-webkit-datetime-edit-second-field, ::-webkit-datetime-edit-millisecond-field, ::-webkit-datetime-edit-meridiem-field {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* ---------- Utilities ---------- */
+button, [role='button'], a { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 2px solid #e9c176; outline-offset: 3px; }
+input:focus-visible, select:focus-visible { outline: none; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0c0e0f; }
+::-webkit-scrollbar-thumb { background: #282a2b; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #e9c176; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    transition-delay: 0s !important;
+  }
+}

@@ -1,0 +1,6 @@
+.gold {
+  background: linear-gradient(135deg, #e9c176 0%, #ffdea5 50%, #c6a15b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

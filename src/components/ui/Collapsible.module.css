@@ -1,0 +1,20 @@
+.collapsible {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .5s cubic-bezier(.22, 1, .36, 1);
+}
+
+.inner {
+  min-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition: visibility 0s linear .5s;
+}
+
+.collapsible.isOpen { grid-template-rows: 1fr; }
+.collapsible.isOpen > .inner { visibility: visible; transition-delay: 0s; }
+
+@media (min-width: 768px) {
+  .collapsible.mdOpen { grid-template-rows: 1fr; }
+  .collapsible.mdOpen > .inner { visibility: visible; }
+}
