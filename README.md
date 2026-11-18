@@ -1,1 +1,1 @@
-Wedsite link : https://rolex-lemon.vercel.app
+Website link : https://rolex-lemon.vercel.app
